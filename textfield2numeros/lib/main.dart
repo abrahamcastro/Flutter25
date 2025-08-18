@@ -121,12 +121,6 @@ class _InicioState extends State<Inicio> {
               },
               child: const Text('Cerrar'),
             ),
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: const Text('Ok'),
-            ),
           ],
         );
       },
