@@ -10,7 +10,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  List<String> seleccionados = ['', '', '', '', '', '', '', '', '', ''];
+  List<String> opciones = ['', '', '', '', '', '', '', '', ''];
   String opcion = 'X';
   @override
   Widget build(BuildContext context) {
@@ -23,15 +23,25 @@ class _MyAppState extends State<MyApp> {
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [boton(1), boton(2), boton(3)],
+              children: [boton(0), boton(1), boton(2)],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [boton(4), boton(5), boton(6)],
+              children: [boton(3), boton(4), boton(5)],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [boton(7), boton(8), boton(9)],
+              children: [boton(6), boton(7), boton(8)],
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  opciones = ['', '', '', '', '', '', '', '', ''];
+                  opcion = 'X';
+                });
+              },
+              child: Text("Reiniciar"),
             ),
           ],
         ),
@@ -45,41 +55,44 @@ class _MyAppState extends State<MyApp> {
         return GestureDetector(
           onTap: () {
             setState(() {
-              if (seleccionados[i] != '') {
-                return;
-              }
-              opcion = opcion == 'X' ? 'O' : 'X';
-              seleccionados[i] = opcion;
+              if (opciones[i] != '') return;
+              opcion = (opcion == 'X') ? 'O' : 'X';
+              opciones[i] = opcion;
             });
-            //mensaje(context, "Hola", i.toString());
-            checar();
+            if (empate()) {
+              mensaje(context);
+            }
           },
           child: Container(
-            alignment: Alignment.center,
             margin: EdgeInsets.all(8.0),
             height: 100,
             width: 100,
-            color: Colors.amber,
-            child: Text(seleccionados[i]),
+            color: Colors.blue,
+            child: Center(
+              child: Text(
+                opciones[i],
+                style: TextStyle(fontSize: 40, color: Colors.white),
+              ),
+            ),
           ),
         );
       },
     );
   }
 
-  void mensaje(BuildContext context, String titulo, String mensaje) {
+  void mensaje(BuildContext context) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(titulo),
-          content: Text(mensaje),
+          title: Text("Empate"),
+          content: Text("El juego ha terminado en empate."),
           actions: [
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text('Si'),
+              child: Text("Aceptar"),
             ),
           ],
         );
@@ -87,5 +100,7 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
-  void checar() {}
+  bool empate() {
+    return opciones.every((e) => e != '');
+  }
 }

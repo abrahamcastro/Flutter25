@@ -35,6 +35,7 @@ class _MyAppState extends State<MyApp> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextField(
+                keyboardType: TextInputType.,
                 controller: texto2,
                 decoration: const InputDecoration(
                   hintText: 'Escribe otro número',
