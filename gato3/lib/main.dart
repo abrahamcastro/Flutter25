@@ -67,7 +67,7 @@ class _MyAppState extends State<MyApp> {
             margin: EdgeInsets.all(8.0),
             height: 100,
             width: 100,
-            color: Colors.blue,
+            color: (opciones[i] == 'X') ? Colors.blue : Colors.red,
             child: Center(
               child: Text(
                 opciones[i],
