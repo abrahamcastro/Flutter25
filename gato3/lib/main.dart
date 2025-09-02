@@ -59,8 +59,11 @@ class _MyAppState extends State<MyApp> {
               opcion = (opcion == 'X') ? 'O' : 'X';
               opciones[i] = opcion;
             });
+            if (ganador(i)) {
+              mensaje(context, "Ganador", "El jugador $opcion ha ganado.");
+            }
             if (empate()) {
-              mensaje(context);
+              mensaje(context, "Empate", "El juego ha terminado en empate.");
             }
           },
           child: Container(
@@ -80,13 +83,13 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
-  void mensaje(BuildContext context) {
+  void mensaje(BuildContext context, String titulo, String contenido) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Empate"),
-          content: Text("El juego ha terminado en empate."),
+          title: Text(titulo),
+          content: Text(contenido),
           actions: [
             TextButton(
               onPressed: () {
@@ -102,5 +105,15 @@ class _MyAppState extends State<MyApp> {
 
   bool empate() {
     return opciones.every((e) => e != '');
+  }
+
+  bool ganador(int i) {
+    final jugador = opciones[i];
+    if (opciones[0] == jugador &&
+        opciones[1] == jugador &&
+        opciones[2] == jugador) {
+      return true;
+    }
+    return false;
   }
 }
