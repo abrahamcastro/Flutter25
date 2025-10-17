@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "865255980484",
+    "firebase_url": "https://wfirebase-ac841-default-rtdb.firebaseio.com",
+    "project_id": "wfirebase-ac841",
+    "storage_bucket": "wfirebase-ac841.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:865255980484:android:b7f0557c25ddf4d88d7891",
+        "android_client_info": {
+          "package_name": "com.example.ffirebase5"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkoJ_5rSf5LwM60Az3RMfPj4Cf09Gj8EQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:865255980484:android:8e671b31169e18c68d7891",
+        "android_client_info": {
+          "package_name": "com.example.firet123"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkoJ_5rSf5LwM60Az3RMfPj4Cf09Gj8EQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
